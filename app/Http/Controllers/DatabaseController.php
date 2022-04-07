@@ -80,7 +80,22 @@ class DatabaseController extends Controller
         foreach ($columns as $column) {
             if (!empty($column['field_name'])) {
 
-                $sql .= " " . $column['field_name'] . " " . $column['field_type'] . "(" . $column['field_length'] . ") " . $column['field_default_type'] . ",";
+                if ($column['field_type'] == "INT") {
+
+                        $sql .= " " . $column['field_name'] . " " . $column['field_type'] . "(" . $column['field_length'] . ") " . " " . $column['field_default_type'] . ",";
+
+                } elseif ($column['field_type'] == "DATE") {
+                    $sql .= " " . $column['field_name'] . " " . $column['field_type']  . " " . $column['field_default_type'] . ",";
+
+                } else {
+                    $characterset_grup = explode('-', $column['field_collation']);
+                    $characterset = $characterset_grup[0];
+                    $collate = $characterset_grup[1];
+
+                        $sql .= " " . $column['field_name'] . " " . $column['field_type'] . "(" . $column['field_length'] . ") " . " " . "CHARACTER SET" . " " . $characterset . " " . "COLLATE" . " " . $collate . " " . $column['field_default_type'] .
+                            ",";
+
+                }
             }
 
         }

@@ -41,6 +41,7 @@
             }).done(function (data) {
 
                 element.next().html(data);
+                $('.show_tables').html(data);
 
             })
 
@@ -125,8 +126,9 @@
 
             }).done(function (data) {
 
-             alert(data.success);
-
+                if(confirm(data.success)) {
+                    window.location.href = "/"
+                }
             });
 
 

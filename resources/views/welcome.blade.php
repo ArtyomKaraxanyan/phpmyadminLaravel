@@ -43,6 +43,13 @@
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">Dashboard</h1>
                     <div class="card mb-4">
+                        <table class="table_show" >
+
+                            <tr>
+                                <th class="show_tables">
+                                </th>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </main>

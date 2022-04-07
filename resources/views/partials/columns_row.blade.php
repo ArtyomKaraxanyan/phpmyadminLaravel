@@ -35,12 +35,16 @@
 
         <th>
 
-            {{--<select name="columns[{{$i}}][field_collation]" id="field_collation_{{$i}}">--}}
-            {{--<option value="utf8_bin">utf8_bin</option>--}}
-            {{--<option value="utf8_croatian_ci">utf8_croatian_ci</option>--}}
-            {{--<option value="utf32_bin">utf32_bin</option>--}}
-            {{--<option value="utf32_croatian_ci">utf32_croatian_ci</option>--}}
-            {{--</select>--}}
+            <select name="columns[{{$i}}][field_collation]" id="field_collation_{{$i}}">
+                <optgroup label="utf8" >
+                <option value="utf8-utf8_bin">utf8_bin</option>
+                <option value="utf8-utf8_croatian_ci">utf8_croatian_ci</option>
+                </optgroup>
+                <optgroup label="utf32">
+                <option value="utf32-utf32_bin">utf32_bin</option>
+                <option value="utf32-utf32_croatian_ci">utf32_croatian_ci</option>
+                </optgroup>
+            </select>
 
         </th>
 

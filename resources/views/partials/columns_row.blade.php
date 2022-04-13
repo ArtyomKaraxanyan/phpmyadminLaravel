@@ -1,7 +1,8 @@
 @for($i=1;$i<=4;$i++)
+
+
+
     <tr>
-
-
         <th>
             <input class=" column_name " id="field_name_{{$i}}" name="columns[{{$i}}][field_name]" type="text"
                    placeholder="Column Name*" />
@@ -59,6 +60,13 @@
             {{--</select>--}}
 
         </th>
+        <th>
+                <button type="button" style="color:red" class="btn  " id="delete_col">
+                    delete
+                </button>
 
+
+        </th>
     </tr>
+
 @endfor

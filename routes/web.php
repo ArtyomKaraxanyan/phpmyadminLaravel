@@ -21,5 +21,6 @@ Route::post('/create-table/{db_name}', [App\Http\Controllers\DatabaseController:
 Route::get('/show-create-table/{db_name}', [App\Http\Controllers\DatabaseController::class,'show_create_table'])->name("show_create_table");
 Route::get('/show-create-database', [App\Http\Controllers\DatabaseController::class,'show_create_database'])->name("show_create_database");
 //Route::get('/get-count', [App\Http\Controllers\DatabaseController::class,'create_count'])->name("create_count");
+Route::post('/delete-table/{table_name}/{db_name}', [App\Http\Controllers\DatabaseController::class,'delete_table'])->name("delete_table");
 
 

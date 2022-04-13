@@ -1,4 +1,14 @@
 <div class="card-header table-responsive">
+
+    <h4> Table name ` {{$table_name}}</h4>
+
+    <a class="nav-link delete_table"  data-url="{{route('delete_table',['table_name'=> $table_name , 'db_name'=>$db_name])}}"
+      style="color: red" href="javascript:void(0)"  >
+
+
+         Delete Table
+
+    </a>
     <table id="datatablesSimple" class="dataTable-table">
         <thead>
 

@@ -41,12 +41,13 @@
             }).done(function (data) {
 
                 element.next().html(data);
-                $('.show_tables').html(data);
+                $('.card').html(data);
 
-            })
+            });
 
 
         });
+
 
         $(document).on('click', '.get_columns', function () {
 
@@ -211,7 +212,69 @@
 
 
         });
+        $(document).on('click', '#add_one_col_btn', function () {
 
+
+
+
+                let   row=  $('#columns-table tr:last'),
+                    cloned_row=row.clone();
+                cloned_row.find('input').val('');
+                cloned_row.find('select').prop("selectedIndex", 0);
+                cloned_row.find('input,select').each(function (index,element) {
+                    let count=$(element).attr('name').replace(/[^0-9]/g,'');
+
+                    let name=$(element).attr('name').slice(10);
+                    $(element).attr({ name: "columns["+(parseInt(count)+1)+"]"+name});
+
+                });
+                $('#columns-table tbody').append(cloned_row.prop('outerHTML'));
+
+
+
+
+
+
+        });
+        $(document).on('click', '#delete_col', function () {
+            let element =$(this);
+            let tbody = $("#columns-table tbody");
+
+            if (tbody.find('tr').length > 1) {
+                $(element).closest('tr').remove();
+
+
+            }
+        });
+        $(document).on('click', '.delete_table', function () {
+            if (confirm('Do You Wont to Delete Table?')){
+
+                let element = $(this),
+                    url = element.data('url');
+
+
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url: url,
+                    method: "POST",
+
+
+                }).done(function (data) {
+
+                    alert('Table is deleted');
+                    window.location.href = "/"
+
+                })
+            }else{
+
+                alert("You canceled")
+            }
+
+
+
+        });
 
 
     </script>

@@ -25,7 +25,7 @@
             </tr>
 
             </thead>
-            <tbody>
+            <tbody id="MyTable">
 
 
           @include('partials.columns_row')
@@ -34,6 +34,10 @@
             </tbody>
         </table>
     </div>
+
+    <button type="button" class="btn " id="add_one_col_btn"  >
+        <i class="fa-solid fa-plus"></i>
+    </button>
 <div class="pull-right">
     <button type="button" class="btn " id="create_table_btn" >
         Create Table

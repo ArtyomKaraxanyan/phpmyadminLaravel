@@ -35,7 +35,7 @@ class DatabaseController extends Controller
         $dataes = \DB::select('SELECT * FROM ' . $db_name . '.' . $table_name);
 
         //dd($columns);
-        return view('partials.columns', compact('columns', 'dataes'))->render();
+        return view('partials.columns', compact('columns', 'dataes','table_name','db_name'))->render();
 
 
     }
@@ -114,11 +114,17 @@ class DatabaseController extends Controller
 
 
     }
+
+    public function delete_table($table_name,$db_name)
+    {
+
+
+        $tables = \DB::select('DROP TABLE ' .$db_name. "." . $table_name);
+
+
+
+
+
+    }
 }
 
-/*$table=\DB::select("CREATE TABLE IF NOT EXISTS  $db_name . $table_name( ".
-" tutorial_id INT NOT NULL AUTO_INCREMENT, ".
-"  tutorial_name  VARCHAR(100) NOT NULL, ".
-"tutorial_author VARCHAR(40) NOT NULL, ".
-"submission_date DATE, "
-"PRIMARY KEY ( tutorial_id )); "*/

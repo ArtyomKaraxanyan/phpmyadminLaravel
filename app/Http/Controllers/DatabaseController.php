@@ -2,10 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Database;
 use Illuminate\Http\Request;
 
 class DatabaseController extends Controller
 {
+    protected $model;
+    public function __construct()
+    {
+       $this->model =new Database();
+    }
+
     public function index()
     {
 
@@ -117,14 +124,7 @@ class DatabaseController extends Controller
 
     public function delete_table($table_name,$db_name)
     {
-
-
-        $tables = \DB::select('DROP TABLE ' .$db_name. "." . $table_name);
-
-
-
-
-
+        $this->model->delete_table($table_name,$db_name);
     }
 }
 

@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Database;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class DatabaseController extends Controller
 {
     protected $model;
     public function __construct()
     {
-       $this->model =new Database();
+        $this->model =new Database();
     }
 
     public function index()
@@ -126,5 +127,30 @@ class DatabaseController extends Controller
     {
         $this->model->delete_table($table_name,$db_name);
     }
+
+
+//    protected function validator(array $data)
+//    {
+//        return Validator::make($data, [
+//            'name' => ['required', 'string', 'max:255'],
+//            'password' => ['required', 'string',],
+//        ]);
+//    }
+//
+//    /**
+//     * Create a new user instance after a valid registration.
+//     *
+//     * @param  array  $data
+//     * @return \App\Models\User
+//     */
+//    protected function create_user(array $data)
+//    {
+////        CREATE USER 'sammy'@'localhost' IDENTIFIED BY 'password';
+////$password= Hash::make($data['password']);
+//        $user = \DB::select('CREATE USER '. "'".$data['name']."'".'@'.'localhost '.'IDENTIFIED BY '. "'".$data['password']."'");
+//        $grant = \DB::select('GRANT ALL PRIVILEGES ON *.* TO  '. "'".$data['name']."'".'@'.'localhost '.'IDENTIFIED BY '. "'".$data['password']."'"
+//
+//        );
+//    }
 }
 

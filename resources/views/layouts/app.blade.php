@@ -9,7 +9,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>Dashboard - SB Admin</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-        
+
         <link href=" {{asset('css/styles.css')}}" rel="stylesheet" />
 
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -21,7 +21,6 @@
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src=" {{asset('js/datatables-simple-demo.js')}}"></script>
         <script src="{{asset('js/jquery.js')}}"></script>
-
     </head>
     <body class="sb-nav-fixed">
     @yield('content')

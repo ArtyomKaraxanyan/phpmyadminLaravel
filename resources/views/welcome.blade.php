@@ -7,7 +7,11 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav" id="databases-content">
                         <div class="sb-sidenav-menu-heading">Create Database</div>
+                        {{--@foreach($users as $user)--}}
 
+                         {{--{{$user->User}}--}}
+
+                        {{--@endforeach--}}
                         <button class="btn btn-create" id="show_create_database" data-url="{{route('show_create_database')}}">
                             Create Database
                         </button>
@@ -32,6 +36,7 @@
                             </div>
 
                         @endforeach
+
                     </div>
                 </div>
 

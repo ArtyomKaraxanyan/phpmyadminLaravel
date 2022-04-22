@@ -16,8 +16,7 @@
 
             {{$table['Tables_in_' . $db_name]}}
             </a>
-        
-             
+
              @endforeach  
     @endif
                          

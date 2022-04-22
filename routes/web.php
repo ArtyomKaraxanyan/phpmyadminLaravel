@@ -13,14 +13,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [App\Http\Controllers\DatabaseController::class,'index']);
-Route::get('/show-tables/{db_name}', [App\Http\Controllers\DatabaseController::class,'show_tables'])->name("show_tables");
-Route::get('/show-table-data/{db_name}/{table_name}', [App\Http\Controllers\DatabaseController::class,'show_columns'])->name("show_columns");
-Route::post('/create/database', [App\Http\Controllers\DatabaseController::class,'create_database'])->name("create_database");
-Route::post('/create-table/{db_name}', [App\Http\Controllers\DatabaseController::class,'create_table'])->name("create_table");
-Route::get('/show-create-table/{db_name}', [App\Http\Controllers\DatabaseController::class,'show_create_table'])->name("show_create_table");
-Route::get('/show-create-database', [App\Http\Controllers\DatabaseController::class,'show_create_database'])->name("show_create_database");
+Route::group(['middleware'=>'guest_mysql'],function (){
+    Route::get('/', [App\Http\Controllers\DatabaseController::class,'index']);
+    Route::get('/show-tables/{db_name}', [App\Http\Controllers\DatabaseController::class,'show_tables'])->name("show_tables");
+    Route::get('/show-table-data/{db_name}/{table_name}', [App\Http\Controllers\DatabaseController::class,'show_columns'])->name("show_columns");
+    Route::post('/create/database', [App\Http\Controllers\DatabaseController::class,'create_database'])->name("create_database");
+    Route::post('/create-table/{db_name}', [App\Http\Controllers\DatabaseController::class,'create_table'])->name("create_table");
+    Route::get('/show-create-table/{db_name}', [App\Http\Controllers\DatabaseController::class,'show_create_table'])->name("show_create_table");
+    Route::get('/show-create-database', [App\Http\Controllers\DatabaseController::class,'show_create_database'])->name("show_create_database");
 //Route::get('/get-count', [App\Http\Controllers\DatabaseController::class,'create_count'])->name("create_count");
-Route::post('/delete-table/{table_name}/{db_name}', [App\Http\Controllers\DatabaseController::class,'delete_table'])->name("delete_table");
+    Route::post('/delete-table/{table_name}/{db_name}', [App\Http\Controllers\DatabaseController::class,'delete_table'])->name("delete_table");
 
+
+});
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::post('/login', [App\Http\Controllers\LoginController::class, 'login'])->name('login_db');
+Route::get('/login', [App\Http\Controllers\LoginController::class, 'showLoginForm'])->name('login')->middleware('auth_mysql');
+Route::get('/logout', [App\Http\Controllers\LoginController::class, 'logout'])->name('logout')->middleware('logout');
 
